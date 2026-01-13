@@ -1,0 +1,84 @@
+:root{
+  --bg:#f7f7f9;
+  --card:#ffffff;
+  --accent:#0b78ff;
+  --muted:#6b6b6b;
+  /* Replace the page background by changing --page-bg (URL to image or GIF) */
+  --page-bg: url('https://i.pinimg.com/originals/2d/44/e9/2d44e965dff94b7aa7a51fb42f25faf8.gif');
+}
+*{box-sizing:border-box}
+/* Page background: uses --page-bg with fallback color from --bg */
+body{font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif;margin:0;background:var(--page-bg),var(--bg);background-size:cover;background-position:center;background-attachment:fixed;color:#111}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+.site-header{background:#fff;border-bottom:1px solid #eee}
+.site-header .container{display:flex;align-items:center;justify-content:space-between}
+.logo{margin:0;padding:12px 0;font-size:20px}
+.site-nav{display:flex;gap:12px}
+.site-nav .nav-link{color:var(--muted);text-decoration:none;padding:12px;border-radius:6px}
+.site-nav .nav-link:hover{background:rgba(11,120,255,0.08);color:var(--accent)}
+.section{padding:28px 0}
+
+/* Portfolio background — change the image by editing the CSS variable
+   Inline override example: <section id="portfolio" style="--portfolio-bg: url(\'my-bg.jpg\')"> */
+#portfolio{
+  position:relative;
+  --portfolio-bg: url('https://i.pinimg.com/originals/2d/44/e9/2d44e965dff94b7aa7a51fb42f25faf8.gif');
+  background-image: var(--portfolio-bg);
+  background-size: cover;
+  background-position: center;
+  border-radius:10px;
+  padding:32px;
+  color:#fff;
+  overflow:hidden;
+}
+#portfolio::before{
+  content:'';
+  position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.35));pointer-events:none;border-radius:inherit;
+}
+#portfolio h2{color:#fff}
+
+/* About section background similar to portfolio; change via --about-bg */
+#about{
+  position:relative;
+  --about-bg: url('https://i.pinimg.com/736x/6f/7f/62/6f7f6266339c136c47241e6186683982.jpg');
+  background-image: var(--about-bg);
+  background-size: cover;
+  background-position: center;
+  border-radius:10px;
+  padding:28px;
+  color:#fff;
+  overflow:hidden;
+}
+#about::before{
+  content:'';
+  position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.28));pointer-events:none;border-radius:inherit;
+}
+#about h2{color:#fff}
+#about p{color:rgba(255,255,255,0.92)}
+.showcase{display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:start}
+.main-image-wrap{position:relative;overflow:hidden;border-radius:8px;background:#ddd}
+.main-image-wrap img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s ease,filter .25s ease}
+.main-image-wrap:hover img{transform:scale(1.03)}
+.overlay{position:absolute;left:0;right:0;bottom:0;padding:10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.35));color:#fff;font-size:14px}
+.thumbs{display:flex;flex-direction:column;gap:10px}
+.thumb{width:100%;height:72px;object-fit:cover;border-radius:6px;cursor:pointer;opacity:.85;border:2px solid transparent;transition:transform .18s,opacity .18s,border-color .18s}
+.thumb:hover{transform:translateY(-4px);opacity:1}
+.thumb.active{border-color:var(--accent);opacity:1}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+.card{background:var(--card);border-radius:8px;overflow:hidden;cursor:pointer;position:relative;box-shadow:0 1px 2px rgba(0,0,0,0.06)}
+.card img{width:100%;height:140px;object-fit:cover;display:block;transition:transform .25s ease}
+.card:hover img{transform:scale(1.05)}
+.card-info{padding:10px;font-weight:600}
+.about p{color:var(--muted);line-height:1.6}
+
+@media (max-width:900px){
+  .showcase{grid-template-columns:1fr}
+  .thumbs{flex-direction:row}
+  .thumb{height:56px;width:calc((100% - 30px)/4)}
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:480px){
+  .thumb{height:48px}
+  .card img{height:110px}
+}
